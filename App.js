@@ -34,11 +34,23 @@ class Wrapper extends Component {
     console.log(text)
   }
 
+
+
+  /**
+   * For native logs output in addition to Logcat
+   * @param {*} text - String from native part.
+   */
   setConsoleOutputText(text) {
     this.setState ({ consoleText: text })   
   }
 
-  setImage(path){
+
+    /**
+   * For rendering image from native part
+   * @param {*} image - Base64 image data
+   */
+
+  setImage(image){
     NativeCamera.show(path, NativeCamera.SHORT);
   }
 
