@@ -1,27 +1,47 @@
-// import React from 'react';
-// import { Text, View } from 'react-native';
-
-// const YourApp = () => {
-//   return (
-//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//       <Text>
-//         Try editing me! 🎉
-//       </Text>
-//     </View>
-//   );
-// }
-
-// export default YourApp;
-
-
+import RNFS from 'react-native-fs';
 import React, { Component } from "react";
 import { Button, 
   Image,
   Text, 
-  View } from "react-native";
+  View, 
+  ScrollView} from "react-native";
 
 class Wrapper extends Component {
-  render() {
+
+  state = {
+    imagePath: "./img/stator.jpg",
+    consoleText : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.              
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+    aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.`
+  };
+
+  onButtonTap() {
+    var text = "New console output";
+    this.setConsoleOutputText(text)
+    console.log(text)
+  }
+
+  setConsoleOutputText(text) {
+    this.setState ({ consoleText: text })   
+  }
+
+  setImage(path){
+
+  }
+
+  render(props) {
+
     return (
       <>
         <View style = {{
@@ -30,21 +50,28 @@ class Wrapper extends Component {
           justifyContent: "flex-start", 
           alignItems: "center"
         }}>
-          <Image source={require('./img/stator.jpg')} style={{height: "50%", width:"100%"}}/>
+          <Image source={{ uri: this.state.imagePath }} style={{height: "50%", width:"100%"}}/>
 
-          <View style={{height: "10%", width:"100%",borderWidth: 1, justifyContent: "center" }}>
+          <View style={{height: "10%", width:"100%",justifyContent: "center" }}>
             <Button
                 title = "Action"
+                onPress={ this.onButtonTap.bind(this) }
               />
           </View>
+          <Text>
+              Logs output:
+          </Text>
 
-          <View style={{height: "40%", width:"100%",borderWidth: 1}}>
-            <Text>
-              Hello!
-            </Text>
+          <View style={{height: "35%", width:"100%",borderWidth: 1}}>
+            <ScrollView>
+              <Text>
+                {this.state.consoleText}
+              </Text>
+            </ScrollView>
           </View>
         </View>
       </>
+
     );
   }
 }
