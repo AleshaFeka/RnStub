@@ -1,4 +1,5 @@
 import RNFS from 'react-native-fs';
+import NativeCamera from './NativeCameraBridge';
 import React, { Component } from "react";
 import { Button, 
   Image,
@@ -9,7 +10,7 @@ import { Button,
 class Wrapper extends Component {
 
   state = {
-    imagePath: "./img/stator.jpg",
+    imagePath: "STUB",
     consoleText : `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
     minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -29,6 +30,7 @@ class Wrapper extends Component {
   onButtonTap() {
     var text = "New console output";
     this.setConsoleOutputText(text)
+    this.setImage(text)
     console.log(text)
   }
 
@@ -37,7 +39,7 @@ class Wrapper extends Component {
   }
 
   setImage(path){
-
+    NativeCamera.show(path, NativeCamera.SHORT);
   }
 
   render(props) {
