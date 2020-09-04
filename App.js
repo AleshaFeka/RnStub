@@ -1,4 +1,4 @@
-import RNFS from 'react-native-fs';
+//import RNFS from 'react-native-fs';
 import NativeCamera from './NativeCameraBridge';
 import React, { Component } from "react";
 import { Button, 
