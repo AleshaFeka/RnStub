@@ -51,7 +51,7 @@ class Wrapper extends Component {
    */
 
   setImage(image){
-    NativeCamera.show(path, NativeCamera.SHORT);
+    NativeCamera.show(image, NativeCamera.SHORT);
   }
 
   render(props) {
